@@ -5,6 +5,10 @@ html, body {
     background-size: cover;
 }
 
+.container {
+    height: 85%;
+}
+
 * {
     font-family: 'Gamja Flower', cursive;
     text-shadow: 0 0 5px #000;
@@ -28,6 +32,19 @@ img {
 
 li {
     font-size: 1.3em;
+}
+
+.defender, .attacker {
+    font-size: 1.5em;
+}
+
+.name {
+    font-size: 2.5em;
+}
+
+.selected {
+    max-width: 7em;
+    max-height: 7em;
 }
 
 footer {
