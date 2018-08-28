@@ -1,2 +1,2 @@
-# RPG_Attack_Game
+# Attack_RPG
 Optional Challenge level for jQuery Homework for UW Coding Bootcamp.
