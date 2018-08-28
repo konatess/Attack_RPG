@@ -1,0 +1,36 @@
+html, body {
+    height: 100%;
+    background-image: url(../images/bg.jpg);
+    background-position: right;
+    background-size: cover;
+}
+
+* {
+    font-family: 'Gamja Flower', cursive;
+    text-shadow: 0 0 5px #000;
+    color: #fff;
+}
+
+header, footer {
+    text-align: center;
+    background-color: #000;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Amatic SC', cursive;
+}
+
+img {
+    max-width: 5em;
+    max-height: 5em;
+    padding: 0 0.3em;
+}
+
+li {
+    font-size: 1.3em;
+}
+
+footer {
+    position: sticky;
+    top: 100%;
+}
