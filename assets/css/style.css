@@ -39,12 +39,22 @@ li {
 }
 
 .name {
-    font-size: 2.5em;
+    font-size: 2.1em;
 }
 
 .selected {
     max-width: 7em;
     max-height: 7em;
+}
+
+.dead {
+    opacity: 0.35;
+}
+
+.win-msg {
+    top:15%;
+    left:15%;
+    font-size: 2.1em;
 }
 
 footer {
