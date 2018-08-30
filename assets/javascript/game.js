@@ -8,12 +8,12 @@
             // attack
             // counter attack
             var moArray = [
-                {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 162, att: 7, catt: 35},
-                {id: "mo2", name: "Bartholomew", imglink: "assets/images/011.png", hp: 155, att: 5, catt: 17},
+                {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 164, att: 7, catt: 17},
+                {id: "mo2", name: "Bartholomew", imglink: "assets/images/011.png", hp: 155, att: 5, catt: 7},
                 {id: "mo3", name: "Moonster", imglink: "assets/images/015.png", hp: 148, att: 8, catt: 9},
-                {id: "mo4", name: "Kzak", imglink: "assets/images/018.png", hp: 136, att: 6, catt: 5},
+                {id: "mo4", name: "Kzak", imglink: "assets/images/018.png", hp: 122, att: 6, catt: 5},
                 {id: "mo5", name: "Fred", imglink: "assets/images/019.png", hp: 179, att: 4, catt: 26},
-                {id: "mo6", name: "Gilly", imglink: "assets/images/020.png", hp: 127, att: 10, catt: 42},
+                {id: "mo6", name: "Gilly", imglink: "assets/images/020.png", hp: 137, att: 10, catt: 42},
                 {id: "mo7", name: "Lucky", imglink: "assets/images/025.png", hp: 113, att: 9, catt: 31},
                 {id: "mo8", name: "Odd", imglink: "assets/images/029.png", hp: 101, att: 11, catt: 51}
             ]
@@ -25,27 +25,24 @@
     var cHtml5 = ' <br> A: '
     var cHtml6 = ' <br> CA: '
     var cHtml7 = ' </div>'
-    // 
+
+    // set stage of play
+        // chooseChar, chooseOpp, attack, gameOver
+        var stage = "chooseChar"
+    // declare a variable for base attack
+    var baseAtt = 0
+    // declare variable for number of opponents remaining
+    var oppLeft = moArray.length - 1
 // functions:
     // set up on page load
         // monsters display in choose1 after heading
-            // .append to heading?
-            // '<div class="float-left pr-3 monster" id="mo1"> <img class="float-left" src="assets/images/010.png" alt="Monster 1"> HP: 000 <br> A: 000 <br> CA: 000 </div>'
-            // testing
-                // $(".choose2").on("click", function() {
-                // var test = cHtml1 + moArray[0]['id'] + cHtml2 + moArray[0]['imglink'] + cHtml3 + moArray[0]['name'] + cHtml4 + moArray[0]['hp'] + cHtml5 + moArray[0]['att'] + cHtml6 + moArray[0]['catt'] + cHtml7;
-                // $(this).append(test);
-                // });
-            for (let i = 0; i < moArray.length; i++) {
-                $(".choose1").append(cHtml1 + moArray[i]['id'] + cHtml2 + moArray[i]['imglink'] + cHtml3 + moArray[i]['name'] + cHtml4 + moArray[i]['hp'] + cHtml5 + moArray[i]['att'] + cHtml6 + moArray[i]['catt'] + cHtml7);
-            };
-            // set stage of play?
-                // chooseChar, chooseOpp, attack, gameOver
-            var stage = "chooseChar"
-            var baseAtt = 0
-            var oppLeft = moArray.length - 1
+        for (let i = 0; i < moArray.length; i++) {
+            $(".choose1").append(cHtml1 + moArray[i]['id'] + cHtml2 + moArray[i]['imglink'] + cHtml3 + moArray[i]['name'] + cHtml4 + moArray[i]['hp'] + cHtml5 + moArray[i]['att'] + cHtml6 + moArray[i]['catt'] + cHtml7);
+        };
+        
     // choose character function
     $(".monster").on("click", function() {
+        console.log("octopus")
         if (stage === "chooseChar") {
         // chosen monster appears in Your character spot
             // displays image, name, hp and attack, no counter-attack
@@ -126,7 +123,7 @@
                             $(".attName").addClass("dead");
                             $(".attImg").addClass("dead");
                             // TODO: lose message
-                            // TODO: attack button and all monsters deactivate
+                            // attack button and all monsters deactivate
                             $(".attackbtn").addClass("invisible");
                             // restart button appears
                             $(".restartbtn").removeClass("invisible");
@@ -181,15 +178,18 @@
         $(".win-msg").removeClass("visible");
         $(".win-msg").addClass("invisible");
         // remove dead class
-        $(".dead").removeClass("dead")
+        $(".dead").removeClass("dead");
         // put all monsters back in choose1
         $(".monster").remove();
         for (let l = 0; l < moArray.length; l++) {
             $(".choose1").append(cHtml1 + moArray[l]['id'] + cHtml2 + moArray[l]['imglink'] + cHtml3 + moArray[l]['name'] + cHtml4 + moArray[l]['hp'] + cHtml5 + moArray[l]['att'] + cHtml6 + moArray[l]['catt'] + cHtml7);
-        };
+        }
         // reset stage
-        stage = "chooseChar"
-        return
+        stage = "chooseChar";
+        // reset number of opponents remaining
+        oppLeft = moArray.length - 1;
+        console.log("restart");
+        // return
     });
 
 // .remove() deletes the selected element, html and all content.
@@ -249,3 +249,13 @@
     //     }
     // };
     // console.log(testArr)
+
+
+    // {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 162, att: 7, catt: 35},
+    // {id: "mo2", name: "Bartholomew", imglink: "assets/images/011.png", hp: 155, att: 5, catt: 17},
+    // {id: "mo3", name: "Moonster", imglink: "assets/images/015.png", hp: 148, att: 8, catt: 9},
+    // {id: "mo4", name: "Kzak", imglink: "assets/images/018.png", hp: 136, att: 6, catt: 5},
+    // {id: "mo5", name: "Fred", imglink: "assets/images/019.png", hp: 179, att: 4, catt: 26},
+    // {id: "mo6", name: "Gilly", imglink: "assets/images/020.png", hp: 127, att: 10, catt: 42},
+    // {id: "mo7", name: "Lucky", imglink: "assets/images/025.png", hp: 113, att: 9, catt: 31},
+    // {id: "mo8", name: "Odd", imglink: "assets/images/029.png", hp: 101, att: 11, catt: 51}
