@@ -8,11 +8,11 @@
             // attack
             // counter attack
             var moArray = [
-                {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 164, att: 7, catt: 17},
+                {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 164, att: 7, catt: 14},
                 {id: "mo2", name: "Bartholomew", imglink: "assets/images/011.png", hp: 155, att: 5, catt: 7},
                 {id: "mo3", name: "Moonster", imglink: "assets/images/015.png", hp: 148, att: 8, catt: 9},
                 {id: "mo4", name: "Kzak", imglink: "assets/images/018.png", hp: 122, att: 6, catt: 5},
-                {id: "mo5", name: "Fred", imglink: "assets/images/019.png", hp: 179, att: 4, catt: 26},
+                {id: "mo5", name: "Fred", imglink: "assets/images/019.png", hp: 179, att: 5, catt: 20},
                 {id: "mo6", name: "Gilly", imglink: "assets/images/020.png", hp: 137, att: 10, catt: 42},
                 {id: "mo7", name: "Lucky", imglink: "assets/images/025.png", hp: 113, att: 9, catt: 31},
                 {id: "mo8", name: "Odd", imglink: "assets/images/029.png", hp: 101, att: 11, catt: 51}
@@ -46,7 +46,7 @@
     // TODO: make reset function and call on $(document).ready
 
     // choose character function
-    $(".monster").on("click", function() {
+    $(document).on("click", ".monster", function() {
         console.log("octopus")
         if (stage === "chooseChar") {
         // chosen monster appears in Your character spot
