@@ -26,6 +26,8 @@
     var cHtml6 = ' <br> CA: '
     var cHtml7 = ' </div>'
 
+   
+
     // set stage of play
         // chooseChar, chooseOpp, attack, gameOver
         var stage = "chooseChar"
@@ -36,10 +38,13 @@
 // functions:
     // set up on page load
         // monsters display in choose1 after heading
+        
         for (let i = 0; i < moArray.length; i++) {
             $(".choose1").append(cHtml1 + moArray[i]['id'] + cHtml2 + moArray[i]['imglink'] + cHtml3 + moArray[i]['name'] + cHtml4 + moArray[i]['hp'] + cHtml5 + moArray[i]['att'] + cHtml6 + moArray[i]['catt'] + cHtml7);
         };
         
+    // TODO: make reset function and call on $(document).ready
+
     // choose character function
     $(".monster").on("click", function() {
         console.log("octopus")
@@ -181,14 +186,14 @@
         $(".dead").removeClass("dead");
         // put all monsters back in choose1
         $(".monster").remove();
-        for (let l = 0; l < moArray.length; l++) {
-            $(".choose1").append(cHtml1 + moArray[l]['id'] + cHtml2 + moArray[l]['imglink'] + cHtml3 + moArray[l]['name'] + cHtml4 + moArray[l]['hp'] + cHtml5 + moArray[l]['att'] + cHtml6 + moArray[l]['catt'] + cHtml7);
-        }
+        for (let i = 0; i < moArray.length; i++) {
+            $(".choose1").append('<div class="float-left pr-3 monster" id="' + moArray[i]['id'] + '"> <img class="float-left" src="' + moArray[i]['imglink'] + '" alt="' + moArray[i]['name'] + '"> HP: ' + moArray[i]['hp'] + ' <br> A: ' + moArray[i]['att'] + ' <br> CA: ' + moArray[i]['catt'] + ' </div>');
+        };
         // reset stage
         stage = "chooseChar";
         // reset number of opponents remaining
         oppLeft = moArray.length - 1;
-        console.log("restart");
+        console.log(stage);
         // return
     });
 
