@@ -110,16 +110,16 @@ console.log(moArray)
    
 // universal variables for these functions 
   // to hold number of attacks needed
-//   var abc = 0
-//   var 
-// // function to determine number of attacks for winner to beat defender
-// function numberAtt(i, attack, defendersHP) {
-// // takes iterator, attacker's attack from moArray, defenders hit points from moArray
-//   while ( (attack * ((i * (i+1))/2)) < defendersHP) {
-//       abc = i
-//       i++
-//   }
-// }
+  var abc = 0
+
+// function to determine number of attacks for winner to beat defender
+function numberAtt(i, attack, defendersHP) {
+// takes iterator, attacker's attack from moArray, defenders hit points from moArray
+  while ( (attack * ((i * (i+1))/2)) < defendersHP) {
+      abc = i
+      i++
+  }
+};
 
 // function winOrNot(dca, attackerHP) {
 //   // dca is defenders counter attack
@@ -157,15 +157,9 @@ console.log(moArray)
 
 //   }
 
-
 // trying this yet again
   // win or not function
   function winOrNot(dca, attackerHP) {
-    var abc = 0
-    while ( (attack * ((i * (i+1))/2)) < defHP) {
-      abc = i
-      i++
-    }
     // dca is defenders counter attack
     if ((abc - 1) * dca > attackerHP) {
       // attacker is defeated
@@ -175,7 +169,7 @@ console.log(moArray)
     else {
       // TODO:
     }
-  }
+  };
   // stacked loops
   for (a = 0; a < moArray.length; a++) {
     var attHP = moArray[a]['hp'];
