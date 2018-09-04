@@ -156,6 +156,9 @@
             }
             // else
             else {
+                // TODO: move this to document, add conditional 
+                // so that it shows up as soon as win
+                // also add lose message
                 // win message
                 $(".win-msg").addClass("visible");
                 $(".win-msg").removeClass("invisible");
