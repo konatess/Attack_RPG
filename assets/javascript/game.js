@@ -8,7 +8,7 @@
             // attack
             // counter attack
             var moArray = [
-                {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 164, att: 7, catt: 14},
+                {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 164, att: 7, catt: 17},
                 {id: "mo2", name: "Bartholomew", imglink: "assets/images/011.png", hp: 155, att: 5, catt: 7},
                 {id: "mo3", name: "Moonster", imglink: "assets/images/015.png", hp: 148, att: 8, catt: 9},
                 {id: "mo4", name: "Kzak", imglink: "assets/images/018.png", hp: 122, att: 6, catt: 5},
@@ -127,7 +127,8 @@
                             // fade attacker and name
                             $(".attName").addClass("dead");
                             $(".attImg").addClass("dead");
-                            // TODO: lose message
+                            // lose message
+                            $(".win-msg").text("You Lost")
                             // attack button and all monsters deactivate
                             $(".attackbtn").addClass("invisible");
                             // restart button appears
@@ -160,8 +161,7 @@
                 // so that it shows up as soon as win
                 // also add lose message
                 // win message
-                $(".win-msg").addClass("visible");
-                $(".win-msg").removeClass("invisible");
+                $(".win-msg").text("You Won!");
                 // attack button deactivates
                 $(".attackbtn").addClass("invisible");
                 // restart button appears
@@ -183,8 +183,7 @@
         $(".attackbtn").addClass("invisible");
         $(".restartbtn").addClass("invisible");
         // hide win message
-        $(".win-msg").removeClass("visible");
-        $(".win-msg").addClass("invisible");
+        $(".win-msg").text("");
         // remove dead class
         $(".dead").removeClass("dead");
         // put all monsters back in choose1

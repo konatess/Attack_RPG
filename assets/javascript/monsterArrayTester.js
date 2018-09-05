@@ -174,7 +174,27 @@ function numberAtt(i, attack, defendersHP) {
   for (a = 0; a < moArray.length; a++) {
     var attHP = moArray[a]['hp'];
     var attack = moArray[a]['att'];
-    for (b = 0; b < moArray[a]['posOpp'].length - 1;) {
-      var defHP = moArray[a]['posOpp'][b]
+    for (b = 0; b < moArray.length;) {
+      if (b !== a) {
+        var defHP = moArray[b]['hp'];
+        var defCA = moArray[b]['catt'];
+        numberAtt();
+        winOrNot();
+        for (c = 0) {
+          if (c !== (a || b)) {
+            for (d) {
+              if (d !== (a || b || c)) {
+                for (e) {
+                  if (e !== (a || b || c || d)) {
+                    for (f) {
+                      if (f !== (a || b || c || d || e))
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      };
     };
   };
