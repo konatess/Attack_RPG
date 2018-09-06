@@ -180,21 +180,7 @@ function numberAtt(i, attack, defendersHP) {
         var defCA = moArray[b]['catt'];
         numberAtt();
         winOrNot();
-        for (c = 0) {
-          if (c !== (a || b)) {
-            for (d) {
-              if (d !== (a || b || c)) {
-                for (e) {
-                  if (e !== (a || b || c || d)) {
-                    for (f) {
-                      if (f !== (a || b || c || d || e))
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        
       };
     };
   };
