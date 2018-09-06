@@ -20,6 +20,17 @@ var defCA = 0;
 
 // iterate through attackers
 for (var a = 0; a < moArray.length; a++) {
+    var toBeDeafeated = [
+        [0, 1, 2, 3, 4, 5, 6, 7], 
+        [0, 1, 2, 3, 4, 5, 6, 7], 
+        [0, 1, 2, 3, 4, 5, 6, 7], 
+        [0, 1, 2, 3, 4, 5, 6, 7], 
+        [0, 1, 2, 3, 4, 5, 6, 7], 
+        [0, 1, 2, 3, 4, 5, 6, 7], 
+        [0, 1, 2, 3, 4, 5, 6, 7], 
+        [0, 1, 2, 3, 4, 5, 6, 7], 
+        [0, 1, 2, 3, 4, 5, 6, 7]
+        ]
     // attacker hp from the previous level
     var prevAttHP = []
     // attacker's attack points from the previous level
@@ -38,7 +49,7 @@ for (var a = 0; a < moArray.length; a++) {
         prevAttA.push(attA);
         attHP = moArray[a]['hp'];
         prevAttHP.push(attHP);
-    // iterate through current level at each level
+    // iterate through possible defenders at each level
     for (var b = 0; b < moArray.length && (winable == false || loseable == false);b++) {
         // if b == a, skip to next b
         if (b !== a) {

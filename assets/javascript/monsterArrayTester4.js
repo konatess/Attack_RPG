@@ -121,7 +121,7 @@ for (var a = 0; a < moArray.length; a++) {
                 }
                 
             }
-            if (b == moArray.length - 1 && currentLevel.includes(0) == false) {
+            if (b == moArray.length - 1 && !(a == 0) && currentLevel.includes(0) == false && pathway.includes(0) == false) {
                 b = -1;
             }
         };
