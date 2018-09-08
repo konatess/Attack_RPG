@@ -30,8 +30,6 @@ for (var a = 0; a < moArray.length; a++) {
     // track opponents lost to at this level
     var currentLevel = [];
     console.log("CurrentLevel should be empty after attacker iteration: " +currentLevel)
-    var prevCurrent = [];
-    console.log("PrevCurrent should be empty after attacker iteration: " +prevCurrent)
     // track if can win and if can lose
     var loseable = false;
     var winnable = false;
@@ -49,7 +47,6 @@ for (var a = 0; a < moArray.length; a++) {
         console.log("CurrentLevel includes " +currentLevel)
         // if b == a, skip b
         if (b !== a) {
-            console.log("Defender is now equal to " +b)
             // if b (defender) is unique choice for current test
             if (pathway.includes(b) == false && currentLevel.includes(b) == false) {
                 console.log("After checking pathway and current, Defender is now equal to " +b)
@@ -87,16 +84,6 @@ for (var a = 0; a < moArray.length; a++) {
                     // prevAttA.push(attA);
                     // prevAttHP.push(attHP);
                     console.log("Previous attacker stats arrays look like this attack: " +prevAttA+ " HP: " +prevAttHP)
-                    // my fix for cleaning up the pushing of arrays to arrays
-                    // var q = currentLevel.toString();
-                    // prevCurrent.push(q);
-                    // console.log("PrevCurrent now contains: " +prevCurrent.join(", "))
-                    // FIXME: trying alternate for pushing array to array
-                    var r = []
-                    r.concat(currentLevel);
-                    console.log("r is array? " +Array.isArray(r))
-                    prevCurrent.concat([r]);
-                    console.log("PrevCurrent now contains: " +prevCurrent)
                     currentLevel.length = 0;
                     console.log("CurrentLevel now includes " +currentLevel)
                 }
@@ -122,66 +109,74 @@ for (var a = 0; a < moArray.length; a++) {
                     console.log("Changed winnable for attacker " + a + " on pathway " + pathway + " to " + winnable)
                     moArray[a]['winnable'] = winnable
                     console.log("Changed winnable in moArray at " + a + " to " + moArray[a]['winnable'])
-                    // go back two levels to test
-                    pathway.pop();
-                    b = pathway.pop();
-                    console.log("Went back two levels, so b is now " +b+ " and pathway is now " +pathway)
-                    if (b == moArray.length -1) {
-                        console.log("b is " +b+ ", so we need to go back farther")
-                        b = pathway.pop();
-                        prevAttA.pop();
-                        prevAttHP.pop();
-                    }
+                    // since this path has been won, we're going back to the first defender and iterating
+                    b = pathway.shift();
+                    console.log("Changed what happens after a win, so b went to first in pathway instead of last")
                     console.log("b is now " +b+ " and pathway is now " +pathway)
+                    pathway.length = 0;
+                    console.log("And now pathway should be empty: " + pathway)
                     // attack and hit points also
-                    prevAttA.pop();
-                    prevAttHP.pop();
-                    attA = prevAttA.pop();
-                    attHP = prevAttHP.pop();
+                    attA = prevAttA.shift();
+                    attHP = prevAttHP.shift();
+                    prevAttA.length = 0;
+                    prevAttHP.length = 0;
                     console.log("After popping, attacker's attack: " +attA+ " and attacker's HP: " +attHP)
                     // get the opponents from that level as well
                     currentLevel.length = 0;
                     console.log("Changed currentLevel to empty: " +currentLevel)
-                    // level holder to not confuse currentLevel
-                    // var r
-                    // r = prevCurrent.pop();
-                    // r = r.split(",");
-                    // loop to get all the strings back to integers
-                    // for (var f = 0; f < currentLevel.length; f++) {
-                    //     currentLevel[f] = parseInt(r[f])
-                    // }
-                    // FIXME: trying alternate for popping array from array
-                    currentLevel = prevCurrent.pop();
+                    for (var i = 0; i < b; i++) {
+                        if (i !== a && pathway.includes(i) === false) {
+                            currentLevel.push(i)
+                        }
+                    }
                     console.log("Reverted to previous currentLevel: " +currentLevel)
                     currentLevel.push(b);
                     console.log("And added b " +b+ " to currentLevel like so " +currentLevel)
                 } 
                 // if all defenders have been tested but not all have been beaten, 
                 // go back one level and test again from there
-                else {
-                    console.log("Now all defenders should be tested, but not beaten so currentLevel " +currentLevel+ " and pathway " +pathway+ " should total 7 defenders")
-                    currentLevel.length = 0;
-                    console.log("CurrentLevel should be empty: " +currentLevel)
-                    var r
-                    r = prevCurrent.pop();
-                    r = r.split(",");
-                    // loop to get all the strings back to integers
-                    for (var f = 0; f < currentLevel.length; f++) {
-                        currentLevel[f] = parseInt(r[f])
+                if (currentLevel.length + pathway.length === moArray.length -1) {
+                    console.log("Now all defenders should be tested, but not beaten so currentLevel " +currentLevel+ " and pathway " +pathway+ " should total 7 defenders");
+                    if (b < moArray.length -1 || (a === moArray.length -1 && b < moArray.length -2)) {
+                        currentLevel.length = 0;
+                        console.log("CurrentLevel should be empty: " +currentLevel)
+                        for (var i = 0; i < b; i++) {
+                            if (i !== a && pathway.includes(i) === false) {
+                                currentLevel.push(i)
+                            }
+                        }
+                        console.log("Reverted to previous currentLevel: " +currentLevel)
+                        currentLevel.push(b);
+                        console.log("Pushed b " +b+ " to currentLevel like so: " +currentLevel);
+                        console.log("b was " +b)
+                        console.log("And pathway was " +pathway)
+                        b = pathway.pop();
+                        console.log("So now after popping b reverts to " +b)
+                        if (b === moArray.length - 1 || (a === moArray.length -1 && b === moArray.length -2)) {
+                            console.log("b is " +b+ ", so we need to go back farther")
+                            b = pathway.pop();
+                            prevAttA.pop();
+                            prevAttHP.pop();
+                            currentLevel.push(b);
+                            console.log("Pushed b " +b+ " to currentLevel, like so: " +currentLevel);
+                            attA = prevAttA.pop();
+                            attHP = prevAttHP.pop();
+                            console.log("After popping, attacker's attack: " +attA+ " and attacker's HP: " +attHP);
+                        }
+                        else {
+                            currentLevel.push(b);
+                            console.log("Pushed b " +b+ " to currentLevel, like so: " +currentLevel);
+                            attA = prevAttA.pop();
+                            attHP = prevAttHP.pop();
+                            console.log("After popping, attacker's attack: " +attA+ " and attacker's HP: " +attHP);
+                        }
                     }
-                    // FIXME: trying alternate for popping array from array
-                    // currentLevel = prevCurrent.pop([]);
-                    console.log("Reverted to previous currentLevel: " +currentLevel)
-                    console.log("b was " +b)
-                    console.log("And pathway was " +pathway)
-                    b = pathway.pop();
-                    console.log("So now after popping b reverts to " +b)
-                    console.log("CurrentLevel should still be empty: " +currentLevel)
-                    currentLevel.push(b);
-                    console.log("Pushed b " +b+ " to currentLevel, like so: " +currentLevel)
-                    attA = prevAttA.pop();
-                    attHP = prevAttHP.pop();
-                    console.log("After popping, attacker's attack: " +attA+ " and attacker's HP: " +attHP)
+                    else {
+                        console.log("b is " +b+ ", so we need to go back farther")
+                        b = pathway.pop();
+                        prevAttA.pop();
+                        prevAttHP.pop(); 
+                    }
                 }
                 
             }
