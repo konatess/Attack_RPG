@@ -2,11 +2,11 @@ var moArray = [
     {winlose: false, winnable: false, hp: 164, att: 8, catt: 17},
     {winlose: false, winnable: false, hp: 155, att: 6, catt: 7},
     {winlose: false, winnable: false, hp: 148, att: 7, catt: 9},
-    {winlose: false, winnable: false, hp: 122, att: 9, catt: 5},
-    {winlose: false, winnable: false, hp: 179, att: 5, catt: 20},
-    {winlose: false, winnable: false, hp: 137, att: 11, catt: 42},
-    {winlose: false, winnable: false, hp: 113, att: 10, catt: 13},
-    {winlose: false, winnable: false, hp: 101, att: 12, catt: 51}];
+    {winlose: false, winnable: false, hp: 122, att: 6, catt: 5},
+    {winlose: false, winnable: false, hp: 179, att: 4, catt: 20},
+    {winlose: false, winnable: false, hp: 137, att: 5, catt: 42},
+    {winlose: false, winnable: false, hp: 113, att: 7, catt: 13},
+    {winlose: false, winnable: false, hp: 101, att: 9, catt: 51}];
 
 
 // variables for the loops
@@ -171,7 +171,7 @@ for (var a = 0; a < moArray.length; a++) {
                         attA = moArray[a]['att'];
                         attHP = moArray[a]['hp'];
                     }
-                    if (b === moArray.length - 1 || (a === moArray.length -1 && b === moArray.length -2)) {
+                    if (pathway.length > 0 && (b === moArray.length - 1 || (a === moArray.length -1 && b === moArray.length -2))) {
                         console.log("Because b is now " +b+ " going back farther")
                         b = pathway.pop();
                         console.log("So now after popping again, b reverts to " +b)
