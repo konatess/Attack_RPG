@@ -8,12 +8,12 @@
             // attack
             // counter attack
             var moArray = [
-                {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 164, att: 7, catt: 17},
-                {id: "mo2", name: "Bartholomew", imglink: "assets/images/011.png", hp: 155, att: 5, catt: 7},
-                {id: "mo3", name: "Moonster", imglink: "assets/images/015.png", hp: 148, att: 8, catt: 9},
-                {id: "mo4", name: "Kzak", imglink: "assets/images/018.png", hp: 122, att: 6, catt: 5},
+                {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 164, att: 6, catt: 17},
+                {id: "mo2", name: "Bartholomew", imglink: "assets/images/011.png", hp: 155, att: 7, catt: 7}, 
+                {id: "mo3", name: "Moonster", imglink: "assets/images/015.png", hp: 148, att: 7, catt: 9},
+                {id: "mo4", name: "Kzak", imglink: "assets/images/018.png", hp: 122, att: 9, catt: 5}, 
                 {id: "mo5", name: "Fred", imglink: "assets/images/019.png", hp: 179, att: 5, catt: 20},
-                {id: "mo6", name: "Gilly", imglink: "assets/images/020.png", hp: 137, att: 10, catt: 42},
+                {id: "mo6", name: "Gilly", imglink: "assets/images/020.png", hp: 137, att: 7, catt: 42},
                 {id: "mo7", name: "Lucky", imglink: "assets/images/025.png", hp: 113, att: 9, catt: 13},
                 {id: "mo8", name: "Odd", imglink: "assets/images/029.png", hp: 101, att: 11, catt: 51}
             ]
@@ -42,8 +42,6 @@
         for (let i = 0; i < moArray.length; i++) {
             $(".choose1").append(cHtml1 + moArray[i]['id'] + cHtml2 + moArray[i]['imglink'] + cHtml3 + moArray[i]['name'] + cHtml4 + moArray[i]['hp'] + cHtml5 + moArray[i]['att'] + cHtml6 + moArray[i]['catt'] + cHtml7);
         };
-        
-    // TODO: make reset function and call on $(document).ready
 
     // choose character function
     $(document).on("click", ".monster", function() {
@@ -158,8 +156,7 @@
             // else
             else {
                 // TODO: move this to document, add conditional 
-                // so that it shows up as soon as win
-                // also add lose message
+                    // so that it shows up as soon as win
                 // win message
                 $(".win-msg").text("You Won!");
                 // attack button deactivates
@@ -199,63 +196,13 @@
         // return
     });
 
-// .remove() deletes the selected element, html and all content.
-// var = $(selector).detach() --> the variable is now equal to
-    // the detached html and content, which can be attached somewhere else.
-// .empty
-
-// $("#mo1").remove();
-
-// var opponents = $(".monster").detach();
-// $(".choose2").append(opponents);
-// $("#mo2").remove();
-
-
-// $("#id").attr("src", moArray[variable set by clicking choice].imglink) to change 
-// updating attacker - defender
-// $(".attName").text(moArray[3]["name"]);
-// $("#attHP").text(moArray[3]["hp"]);
-// $("#attA").text(moArray[3]["att"]);
-
-// $(".defName").text(moArray[4]["name"]);
-// $("#defHP").text(moArray[4]["hp"]);
-// $("#defCA").text(moArray[4]["catt"]);
-
-// $("#id").removeClass(classname) e.g.
-// $(".attackbtn").removeClass("invisible");
-// $(".restartbtn").removeClass("invisible");
-// $(".attacker").removeClass("invisible");
-// $(".defender").removeClass("invisible");
-// $(".attName").addClass("dead");
-// $(".attImg").addClass("dead");
 
 
 
 
 
 
-// function to check that all the characters' stats work
-    // (X's HP)/(Y's CA) > (√(8(YHP/X's A) +1) /2 ===== X defeats Y
-    // var mon1 = []; 
-    // var mon2 = []; 
-    // var mon3 = []; 
-    // var mon4 = []; 
-    // var mon5 = []; 
-    // var mon6 = []; 
-    // var mon7 = []; 
-    // var mon8 = [];
-    // var testArr = [mon1 = [], mon2 = [], mon3 = [], mon4 = [], mon5 = [], mon6 = [], mon7 = [], mon8 = []]
-    // for (var j = 0; j < moArray.length; j++) {
-    //     for (var i = 0; i < moArray.length; i++) {
-    //         if (parseInt(moArray[j]["hp"])/parseInt(moArray[i]["catt"]) > (Math.sqrt(8*(parseInt(moArray[i]["hp"])/parseInt(moArray[j]["att"])) +1) /2)) {
-    //             testArr[j].push(true);
-    //         }
-    //         else {
-    //             testArr[j].push(false)
-    //         }
-    //     }
-    // };
-    // console.log(testArr)
+
 
 
     // {id: "mo1", name: "Oscar", imglink: "assets/images/010.png", hp: 162, att: 7, catt: 35},
