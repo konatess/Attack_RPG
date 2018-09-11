@@ -1,12 +1,12 @@
 var moArray = [
-    {winlose: false, winnable: false, hp: 164, att: 6, catt: 17},
-    {winlose: false, winnable: false, hp: 155, att: 7, catt: 7},
-    {winlose: false, winnable: false, hp: 148, att: 7, catt: 9},
-    {winlose: false, winnable: false, hp: 122, att: 8, catt: 5},
-    {winlose: false, winnable: false, hp: 179, att: 6, catt: 20},
-    {winlose: false, winnable: false, hp: 137, att: 7, catt: 42},
-    {winlose: false, winnable: false, hp: 113, att: 7, catt: 13},
-    {winlose: false, winnable: false, hp: 101, att: 9, catt: 51}];
+    {winlose: false, winnable: false, path: "", hp: 164, att: 5, catt: 17},
+    {winlose: false, winnable: false, path: "", hp: 155, att: 6, catt: 7},
+    {winlose: false, winnable: false, path: "", hp: 148, att: 6, catt: 9},
+    {winlose: false, winnable: false, path: "", hp: 122, att: 9, catt: 5},
+    {winlose: false, winnable: false, path: "", hp: 179, att: 5, catt: 20},
+    {winlose: false, winnable: false, path: "", hp: 137, att: 6, catt: 42},
+    {winlose: false, winnable: false, path: "", hp: 113, att: 8, catt: 13},
+    {winlose: false, winnable: false, path: "", hp: 101, att: 8, catt: 51}];
 
 
 // variables for the loops
@@ -67,8 +67,8 @@ for (var a = 0; a < moArray.length; a++) {
                 console.log("And attacker " +a+ "'s HP are: " +attHP)
                 // play
                 // while both attacker and defender have HP
-                var preBattleA = attA
-                var preBattleHP = attHP
+                // var preBattleA = attA
+                // var preBattleHP = attHP
                 while (attHP > 0 && defHP > 0) {
                     // attacker attacks defender
                     defHP = defHP - attA;
@@ -91,14 +91,14 @@ for (var a = 0; a < moArray.length; a++) {
                     b = -1
                     console.log("Set b to " +b)
                     // push the attack and attacker hit points at this level
-                    prevAttA.push(preBattleA);
-                    prevAttHP.push(preBattleHP);
+                    prevAttA.push(attA);
+                    prevAttHP.push(attHP);
                     console.log("Previous attacker stats arrays look like this attack: " +prevAttA+ " HP: " +prevAttHP)
                     currentLevel.length = 0;
                     console.log("CurrentLevel now includes " +currentLevel)
                 }
                 // if attacker is defeated
-                else if (attHP < 0) {
+                else if (attHP <= 0) {
                     loseable = true;
                     console.log("Changed loseable for attacker " +a+ " facing defender " +b+ " to " +loseable)
                     // push iterator to currentLevel
@@ -125,6 +125,7 @@ for (var a = 0; a < moArray.length; a++) {
                 if (pathway.length === moArray.length - 1) {
                     console.log("Pathway's length is " +pathway.length)
                     winnable = true;
+                    moArray[a]['path'] = pathway.toString();
                     console.log("Changed winnable for attacker " +a+ " on pathway " +pathway+ " to " + winnable)
                     moArray[a]['winnable'] = winnable
                     console.log("Changed winnable in moArray at " + a + " to " + moArray[a]['winnable'])
@@ -150,8 +151,10 @@ for (var a = 0; a < moArray.length; a++) {
                     // go back
                     b = pathway.pop();
                     console.log("So now after popping, b reverts to " +b)
-                    attA = prevAttA.pop();
-                    attHP = prevAttHP.pop();
+                    prevAttA.pop();
+                    prevAttHP.pop();
+                    attA = (prevAttA[prevAttA.length -1] || moArray[a]['att']);
+                    attHP = (prevAttHP[prevAttHP.length -1] || moArray[a]['hp']);
                     console.log("After popping, previous stats are: attack: " +prevAttA+ " HP: " +prevAttHP);
                     currentLevel.length = 0;
                     console.log("CurrentLevel should be empty: " +currentLevel)
@@ -165,16 +168,6 @@ for (var a = 0; a < moArray.length; a++) {
                     console.log("Pushed " +b+ " to currentLevel, which now includes " +currentLevel);
                     console.log("Before popping, attacker " +a+ "'s previous stats are: attack: " +prevAttA+ " HP: " +prevAttHP);
                     console.log("Pathway is " +pathway);
-                    
-                    // if (pathway.length > 0) {
-                    //     attA = prevAttA[prevAttA.length - 1];
-                    //     attHP = prevAttHP[prevAttHP.length - 1];
-                    //     console.log("After popping AND copying, attacker " +a+ "'s attack: " +attA+ " and HP: " +attHP)
-                    // }
-                    // else {
-                    //     attA = moArray[a]['att'];
-                    //     attHP = moArray[a]['hp'];
-                    // }
                     if (pathway.length > 0 && (b === moArray.length - 1 || (a === moArray.length -1 && b === moArray.length -2))) {
                         console.log("Because b is now " +b+ " going back farther")
                         b = pathway.pop();
@@ -189,8 +182,10 @@ for (var a = 0; a < moArray.length; a++) {
                         console.log("Reverted to previous currentLevel: " +currentLevel);
                         currentLevel.push(b);
                         console.log("Pushed " +b+ " to currentLevel, which now includes " +currentLevel);
-                        attA = prevAttA.pop();
-                        attHP = prevAttHP.pop();
+                        prevAttA.pop();
+                        prevAttHP.pop();
+                        attA = (prevAttA[prevAttA.length -1] || moArray[a]['att']);
+                        attHP = (prevAttHP[prevAttHP.length -1] || moArray[a]['hp']);
                         console.log("And attacker " +a+ "'s attack is " +attA+ " and HP are " +attHP);
                     }
                 }
