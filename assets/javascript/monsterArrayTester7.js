@@ -41,11 +41,9 @@ for (var a = 0; a < moArray.length; a++) {
     var pathway = [];
     // track opponents lost to at this level
     var currentLevel = [];
-    console.log("CurrentLevel should be empty after attacker iteration: " +currentLevel)
     // track if can win and if can lose
     var loseable = false;
     var winnable = false;
-    console.log("Set winnable to " +winnable+ " and loseable to " +loseable);
     // set all variables for the attacker
         baseAtt = moArray[a]['att'];
         attA = moArray[a]['att'];
@@ -53,8 +51,6 @@ for (var a = 0; a < moArray.length; a++) {
         
     // iterate through current level at each level
     for (var b = 0; b < moArray.length && (winnable == false || loseable == false);b++) {
-        console.log("Chose defender " +b)
-        console.log("Pathway includes " +pathway+ " and currentLevel includes " +currentLevel);
         // if b == a, skip b
         if (b !== a) {
             // if b (defender) is unique choice for current test
@@ -72,7 +68,6 @@ for (var a = 0; a < moArray.length; a++) {
                 while (attHP > 0 && defHP > 0) {
                     // attacker attacks defender
                     defHP = defHP - attA;
-                    console.log("Defender " +b+ "'s HP should be reduced: " +defHP)
                     // attacker's attack points go up
                     attA = attA + baseAtt;
                     // if defender is still alive, it counter attacks
@@ -196,9 +191,7 @@ for (var a = 0; a < moArray.length; a++) {
         };
     };
     if (winnable == true && loseable == true) {
-        console.log("When winnable and loseable are both true")
         moArray[a]['winlose'] = true;
-        console.log("We get " +moArray[a]['winlose'])
     };
 };
 console.log(moArray)

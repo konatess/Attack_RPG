@@ -45,17 +45,14 @@
 
     // choose character function
     $(document).on("click", ".monster", function() {
-        console.log("octopus")
         if (stage === "chooseChar") {
         // chosen monster appears in Your character spot
             // displays image, name, hp and attack, no counter-attack
-            var attID = $(this).attr("id")
-            console.log(attID);
+            var attID = $(this).attr("id");
             for (let j = 0; j < moArray.length; j++) {
                 var attIndex
                 moArray[j]["id"] === attID ? attIndex = j : null
             };
-            console.log(attIndex);
                 // display image
                 $(".attImg").attr("src", moArray[attIndex]["imglink"]);
                 // display name
@@ -80,8 +77,7 @@
         if (stage === "chooseOpp") {
         // chosen opponent appears in Defender spot
             // displays name? displays hp and counter attack, no attack
-            var defID = $(this).attr("id")
-            console.log(defID);
+            var defID = $(this).attr("id");
             for (let k = 0; k < moArray.length; k++) {
                 var defIndex
                 moArray[k]["id"] === defID ? defIndex = k : null
@@ -116,7 +112,6 @@
                 $("#defHP").text(parseInt($("#defHP").text()) - parseInt($("#attA").text()));
                 // Attacker's attack points increase by base attack
                 $("#attA").text(parseInt($("#attA").text()) + baseAtt);
-                console.log($("#attA").text())
                 // Attacker's HP decreased by Defender's counter-attack points
                 if (parseInt($("#defHP").text()) > 0) {
                     $("#attHP").text(parseInt($("#attHP").text() - parseInt($("#defCA").text())));
@@ -188,6 +183,5 @@
         stage = "chooseChar";
         // reset number of opponents remaining
         oppLeft = moArray.length - 1;
-        console.log(stage);
         // return
     });
